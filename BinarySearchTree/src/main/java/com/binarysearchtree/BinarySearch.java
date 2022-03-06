@@ -74,6 +74,40 @@ public class BinarySearch {
 	public class Sum{
 		int sum = 0;
 	}
+	/*
+	 * 
+	 */
+	public static boolean flag = false;
+	
+	/*
+	 * Search Node element 
+	 */
+	public void searchNode(BNode temp , int value) {
+		/*
+		 *Check weather tree is empty  
+		 */
+		if(root == null) {
+			System.out.println("Tree is Empty");
+		}else {
+			 //If value is found in the given binary tree then, set the flag to true 
+			if(temp.data == value) {
+				flag = true;
+				return;
+			}
+			/*
+			 * Search in left subtree
+			 */
+			if (flag == false && temp.left!=null) {
+				searchNode(temp.left, value);
+			}
+			if(flag == false && temp.right!=null) {
+				searchNode(temp.right, value);
+	
+			}
+			
+		}
+		System.out.println("value present at" +temp.data);
+	}
 	
 	public static void main(String [] args) {
 		BinarySearch tree = new BinarySearch();
@@ -97,6 +131,7 @@ public class BinarySearch {
 		
 		
 		tree.inorder();
+		tree.searchNode(tree.root, 67);
 	}
 	
 }
